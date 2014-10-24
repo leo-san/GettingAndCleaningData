@@ -9,7 +9,7 @@ library(dplyr)
 testdata1 <- read.table("./UCI HAR Dataset/test/X_test.txt")
 #subject_test.txt contains the subject labels (1-30) for the test set
 testdata2 <- read.table("./UCI HAR Dataset/test/subject_test.txt")
-#y_test contains activities (1-6) for the test set
+#y_test contains activity labels (1-6) for the test set
 testdata3 <- read.table("./UCI HAR Dataset/test/y_test.txt")
 #Merging the test data into one data set by adding the subject labels and activities 
 #as variables in the data set
@@ -19,7 +19,7 @@ mergetest <- cbind(testdata1, testdata2, testdata3)
 traindata1 <- read.table("./UCI HAR Dataset/train/X_train.txt")
 #subject_train.txt contains the subject labels (1-30) for the training set
 traindata2 <- read.table("./UCI HAR Dataset/train/subject_train.txt")
-#y_train contains activities (1-6) for the training set
+#y_train contains activity labels (1-6) for the training set
 traindata3 <- read.table("./UCI HAR Dataset/train/y_train.txt")
 #Merging the training data into one data set by adding the subject labels and activities 
 #as variables in the data set
@@ -29,7 +29,7 @@ mergetrain <- cbind(traindata1, traindata2, traindata3)
 mergetesttrain <- rbind(mergetest, mergetrain)
 rm(list = c("traindata1", "traindata2", "traindata3", "testdata1", "testdata2", "testdata3"))
 
-#Reads feature labels which will be used, together with subject and activity, 
+#Reads feature names which will be used, together with subject and activity, 
 #as column names in the data set.
 features <- read.table("./UCI HAR Dataset/features.txt")
 newfeat <- c(as.character(features[,2]), "subject", "activity")
